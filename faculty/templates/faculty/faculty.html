@@ -1,0 +1,25 @@
+{% extends "faculty/facultyLayout.html" %}
+{% block content%}
+	<script type=text/javascript>
+            $(document).ready(function() {
+            	f_id=document.getElementById('fid').innerHTML;
+            	var usr_img='<img src="/static/image/student/'+f_id+'.jpg" width="250" height="250" class="photo" alt="">';
+            	document.getElementById('photo').innerHTML=usr_img;
+            	$('#ma').addClass("active")
+              });
+    </script>
+    
+ <div id="photo"></div>
+ <div class="std-info">
+ 	<table class=" table-striped info-tbl">
+ 	{% set tag=['','Id.','Name','Department','Email','Contact','Date of Birth','Designation','Qualification','Address']%}
+ 	{% for i in data %}
+ 	    {% if loop.index==1 %}
+ 		<tr><td>{{tag[loop.index]}}</td><td id="fid">{{i}}</td></tr>
+ 		{% else %}
+ 		<tr><td>{{tag[loop.index]}}</td><td>{{i}}</td></tr>
+ 	    {% endif %}
+ 	{% endfor %}
+ 	</table>
+ </div>
+ {% endblock %}

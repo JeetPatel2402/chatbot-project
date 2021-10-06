@@ -1,0 +1,25 @@
+{% extends "student/studentLayout.html" %}
+{% block content%}
+	<script type=text/javascript>
+            $(document).ready(function() {
+            	s_id=document.getElementById('sid').innerHTML;
+            	var usr_img='<img src="/static/image/student/'+s_id+'.jpg" width="250" height="250" class="photo" alt="'+s_id+'">';
+            	document.getElementById('photo').innerHTML=usr_img;
+            	$('#md').addClass("active")
+              });
+    </script>
+    
+ <div id="photo"></div>
+ <div class="std-info">
+ 	<table class="info-tbl table-striped">
+ 	{% set tag=['','Roll No.','Name','Date of Birth','Contact','Email','Department','Address','Admission year','Division','Fee-class','Semester']%}
+ 	{% for i in data %}
+ 	    {% if loop.index==1 %}
+ 		<tr><td>{{tag[loop.index]}}</td><td id="sid">{{i}}</td></tr>
+ 		{% else %}
+ 		<tr><td>{{tag[loop.index]}}</td><td>{{i}}</td></tr>
+ 	    {% endif %}
+ 	{% endfor %}
+ 	</table>
+ </div>
+ {% endblock %}

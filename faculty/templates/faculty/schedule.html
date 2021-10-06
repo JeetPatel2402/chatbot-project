@@ -1,0 +1,46 @@
+{% extends "faculty/facultyLayout.html" %}
+{% block content%}
+	<style type="text/css">
+	body{
+		background-color: rgb(255, 87, 34)
+	}
+	</style>
+<script type="text/javascript">
+	$('#sc').addClass("active")
+</script>
+</head>
+<body>
+ <div class="row frm">
+	<div class="col-sm-4 changeP">
+    <form method="post" action="#">
+		    <label>Subject:</label>
+            <div class="form-group"> 
+                <select class="form-control" name="subject" required>
+                  <option value="">Select</option>
+                  {% for i in data %}
+                  <option value="{{i[0]}}">{{i[1]}}</option>
+                  {% endfor %}
+                </select> 
+            </div>
+              <label>Exam:</label>
+            <div class="form-group"> 
+                <select class="form-control" name="exam">
+                  <option value="mid-sem-1">mid-sem-1</option>
+                  <option value="mid-sem-2">mid-sem-2</option>
+                  <option value="internal">internal viva</option>
+                </select> 
+            </div> 
+            <label>Date:</label>
+            <div class="form-group"> 
+                <input type="Date" name="date" class="form-control" placeholder="Date" required> 
+            </div> 
+            <div class="form-group">
+              <center><input type="submit" name="submit" value="Submit" class="btn btn-success">
+                <div><b style="color: green">{{msg}}</b></div></center>
+            </div>
+            </form>
+		</div>  
+	</div>
+	</script>
+	<script type="text/javascript" src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>
+{%endblock%}

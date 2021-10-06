@@ -1,0 +1,87 @@
+{% extends "student/studentLayout.html" %}
+{% block content%}
+	<script type=text/javascript>
+            $(document).ready(function() {
+              s_id=document.getElementById('sid').innerHTML;
+              var usr_img='<img src="/static/image/student/'+s_id+'.jpg" width="250" height="250" class="photo">';
+              $('#qr').addClass("active")
+              $('form').on('submit', function(event) {
+                  var num=$('.chat-message').length;
+                var div1='<div class="chat-message clearfix usr"><img src="/static/image/student/'+s_id+'.jpg" width="32" height="32" class="img user"><div class="chat-message-content clearfix user-msg"><div id="query'+String(num)+'"></div></div></div>';
+                var div2='<div class="chat-message clearfix"><img src="/static/image/bot.png" width="32" height="32" class="img bot"><div class="chat-message-content clearfix bot-msg"><div id="result'+String(num)+'"></div></div></div>';
+                $('.chat-history').append(div1,div2);
+                $.ajax({
+                  data:{
+                    query:$('input[name="query"]').val()
+                  },
+                  type:'POST',
+                  url:'/get'
+                })
+                .done(function(data){
+                  if (data.error){
+                    document.getElementById("result"+String(num)).innerHTML=data.error;
+                    document.getElementById('result'+String(num)).scrollIntoView();
+                  }
+                  else{
+                    //$('#result').text(data.response).show();
+                    var id='query'+String(num);
+                    document.getElementById(id).innerHTML=$('input[name="query"]').val();
+                    document.getElementById("result"+String(num)).innerHTML=data.response;
+                    window.qry=$('input[name="query"]').val();
+                    window.response=data.response;
+                    $('input[name="query"]').val("");
+                    document.getElementById("result"+String(num)).scrollIntoView();
+                  }
+
+                });
+                event.preventDefault();
+                });
+              $('#invalid').click(function() {
+                  $.post('/invalid',{
+                    query:window.qry ,
+                    res:window.response
+                },
+                function(result){
+                  alert(result.msg);
+                });
+                });
+                return false;          
+            });
+    </script>
+ <p id="sid" style="visibility: hidden;">{{data}}</p>
+<div class="row">
+  <div id="live-chat" class="col-xs-12 col-sm-6 col-lg-10 col-md-6">
+    
+    <header class="clearfix">
+      
+
+      <h4>Chat</h4>
+
+    </header>
+
+    <div class="chat">
+      
+      <div class="chat-history">
+
+      </div> <!-- end chat-history -->
+
+      <form action="#" method="post">
+
+        <fieldset>
+          <div class="buttonInside">
+          <input type="text" name="query" class="inmsg" placeholder="Type your message…" autofocus>
+          <button type="submit" id="send"><i class="fa fa-send-o" style="font-size: 28px;color: rgb(51,51,51);"></i></button>
+          </div>
+
+        </fieldset>
+
+      </form>
+
+    </div> <!-- end chat -->
+<center><button class="btn btn-default" id="invalid">Invalid Response</button></center>
+  </div> <!-- end live-chat -->
+</div>
+<script type="text/javascript">
+  $('.inmsg').css('width',$('.chat').width()-80);
+</script>
+{%endblock%}

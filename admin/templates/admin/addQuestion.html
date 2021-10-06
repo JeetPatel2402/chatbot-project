@@ -1,0 +1,55 @@
+{% extends "admin/adminLayout.html" %}
+{% block content %}
+<script type="text/javascript">
+  $('#aq').addClass("blue")
+</script>
+<!-- !PAGE CONTENT! -->
+<div class="main" style="margin-top:43px;margin-left: 300px;">
+
+  <!-- Header -->
+  <header class="container" style="padding-top:22px">
+    <h5><b>Add Question</b></h5>
+  </header>
+
+  <div class="row" style="margin-left:350px">
+  <div class="col-sm-6">
+            <form method="post" action="#">
+            <label>Question:</label>
+            <div class="form-group"> 
+                <input type="text" value="{{qry}}" required class="form-control" placeholder="Question" name="query"> 
+            </div>
+            <label>Response:</label>
+            <div class="form-group"> 
+                <textarea class="form-control" required placeholder="Response" name="res"></textarea> 
+            </div>
+            <label>Category:</label>
+            <div class="form-group">
+                <input type="radio" checked="true" onclick="document.getElementById('sel').disabled=false;" name="Category" style="margin-right: 5px" value="student">Student
+                <input type="radio" onclick="document.getElementById('sel').disabled=true;" name="Category" style="margin-right: 5px" value="guest">Guest
+                <input type="radio" onclick="document.getElementById('sel').disabled=true;" name="Category" style="margin-right: 5px" value="informal">Informal
+            </div>
+            <label>Keyword:</label>
+            <div class="form-group"> 
+                <select class="form-control" id="sel" required name="key">
+                  <option value="">--Select--</option>
+                  <option value="attendance">attendance</option>
+                  <option value="result">result</option>
+                  <option value="mid-sem exam">schedule</option>
+                  <option value="class time table">class time table</option>
+                </select> 
+            </div>
+            <div class="alert alert-success" id="msg">{{msg}}</div>
+            <div class="form-group">
+              <center><input type="submit" name="submit" value="Submit" class="btn btn-success"></center>
+            </div>
+          </form>
+    </div>  
+  </div>
+  </div>
+  <script type="text/javascript">
+    var msg=$("#msg").text();
+    if(msg==""){
+      $("#msg").css("display","none");
+    }
+  </script>
+  {% endblock %}

@@ -1,0 +1,89 @@
+{% extends "student/studentLayout.html" %}
+{% block content%}
+	<style type="text/css">
+		.pass_show{position: relative} 
+
+.pass_show .ptxt { 
+
+position: absolute; 
+
+top: 50%; 
+
+right: 10px; 
+
+z-index: 1; 
+
+color: #f36c01; 
+
+margin-top: -10px; 
+
+cursor: pointer; 
+
+transition: .3s ease all; 
+
+} 
+
+.pass_show .ptxt:hover{color: #333333;} 
+.changeP{
+	position: absolute;
+	left: 450px;
+	top: 200px;
+	}
+	body{
+		background-color: rgb(255, 87, 34)
+	}
+	</style>
+<script type="text/javascript">
+	$('#cp').addClass("active")
+</script>
+</head>
+<body>
+ <div class="row">
+	<div class="col-sm-4 changeP">
+		    <form method="post" action="#">
+		    <label>Current Password</label>
+		    <div class="form-group pass_show"> 
+                <input type="password" name="cp" required class="form-control" placeholder="Current Password"> 
+            </div> 
+		       <label>New Password</label>
+            <div class="form-group pass_show"> 
+                <input type="password" name="np" id="pass" required pattern=".{0}|.{8,15}" title="password should be of 8 to 15 characters" class="form-control" placeholder="New Password"> 
+            </div> 
+		       <label>Confirm Password</label>
+            <div class="form-group pass_show"> 
+                <input type="password" name="cfp" id="cpass" required class="form-control" placeholder="Confirm Password"> 
+            </div> <span id="msg"></span>
+            <div class="form-group">
+            	<input type="submit" name="submit" value="Change Password" class="btn btn-success">
+            </div>
+        </form>
+        <h4 id="result" class="text-success" align="center" style="font-weight: bold;">{{ msg }}</h4>
+        <h4 id="result" class="text-danger" align="center" style="font-weight: bold;">{{ err }}</h4>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#cpass').on('keyup',function(){
+				if($('#pass').val() == $('#cpass').val()){
+					$('#msg').html('');	
+				}
+				else{
+					$('#msg').html('Not Matching your new password with Confirm password').css('color','red');
+				}
+
+			});
+$('.pass_show').append('<span class="ptxt">Show</span>');  
+});
+  
+
+$(document).on('click','.pass_show .ptxt', function(){ 
+
+$(this).text($(this).text() == "Show" ? "Hide" : "Show"); 
+
+$(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; }); 
+
+});  
+	</script>
+	<script type="text/javascript" src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>
+{%endblock%}

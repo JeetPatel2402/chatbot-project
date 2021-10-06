@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='image/icons/favicon.ico') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/main.css')}}">
+
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				
+
+				<form class="login100-form validate-form" action="/password_change" method="POST">
+					<span class="login100-form-title">
+						Reset Password
+					</span>
+					
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" pattern=".{0}|.{8,15}" title="password should be of 8 to 15 characters" required name="pass" placeholder="New Password" >
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" pattern=".{0}|.{8,15}" title="password should be of 8 to 15 characters" required name="pass1" placeholder="Confirm Password" >
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div><span id="msg"></span>
+					<input type="hidden" name="user" value="{{uname}}">
+					<input type="hidden" name="category" value="{{category}}">
+					<div class="container-login100-form-btn">
+					<div id="result1" class=" alert alert-success" align="center" style="font-weight: bold;">{{output}}</div>
+						<input type="submit" name="submit" value="Reset" class='login100-form-btn'>
+					</div>
+				</form>
+				<div class="text-center p-t-12"><a href="{{url_for('.login')}}">Click here to Login</a></div>
+			</div>
+		</div>
+	</div>
+	<script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		var suc= $("#result1").text();
+		if(suc==""){
+			$("#result1").css("display","none");
+		}
+			$('#cpass').on('keyup',function(){
+				if($('#pass').val() == $('#cpass').val()){
+					$('#msg').html('');	
+				}
+				else{
+					$('#msg').html('Not Matching your new password with Confirm password').css('color','red');
+				}
+
+			});
+	</script>
+	
+	
+	<script src="{{url_for('static',filename='bootstrap/js/popper.js')}}"></script>
+	<script src="{{url_for('static',filename='bootstrap/js/bootstrap.min.js')}}"></script>
+	
+	<script src="{{url_for('static',filename='js/main.js')}}"></script>
+
+</body>
+</html>

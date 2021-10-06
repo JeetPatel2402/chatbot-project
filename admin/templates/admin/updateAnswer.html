@@ -1,0 +1,56 @@
+{% extends "admin/adminLayout.html" %}
+{% block content %}
+<script type="text/javascript">
+  $('#ua').addClass("blue")
+</script>
+<!-- !PAGE CONTENT! -->
+<div class="main" style="margin-top:43px;margin-left: 300px;">
+
+  <!-- Header -->
+  <header class="container" style="padding-top:22px">
+    <h5><b>Update Answer</b></h5>
+  </header>
+
+  <div class="row" style="margin-left:350px">
+  <div class="col-sm-6">
+            <form method="post" onsubmit="return fun()" action="#" enctype="multipart/form-data">
+            <label>Question:</label>
+            <div class="form-group"> 
+                <input type="text" value="{{data}}" name="query" required class="form-control" placeholder="Question"> 
+            </div>
+            <label>New Response:</label>
+            <div class="form-group"> 
+                <textarea class="form-control" name="response" required placeholder="Response"></textarea> 
+            </div>
+            <label>Category:</label>
+            <div class="form-group">
+                Guest<input type="radio" value="guest" checked="true" name="Category" style="margin-left: 5px">
+                Informal<input type="radio" value="informal" name="Category" style="margin-left: 5px">
+            </div>
+            <div class="alert alert-success" id="msg">{{msg}}</div>
+            <div class="form-group">
+              <center><input type="submit" name="submit" value="Submit" class="btn btn-success"></center>
+            </div>
+            </form>
+    </div>  
+  </div>
+  </div>
+  <script type="text/javascript">
+    var msg=$("#msg").text();
+    if(msg==""){
+      $("#msg").css("display","none");
+    }
+  </script>
+  <script type="text/javascript">
+    function fun(){
+      if ($('#fil').val()=='' || $('#fil').attr('disabled')){return true}
+      else{
+        if($("input[name='Category']:checked"). val()=='informal'){return false;}
+      }
+    var ext = $('#fil').val().split('.').pop().toLowerCase();
+    if($.inArray(ext, ['gif','png','jpg','jpeg','pdf']) == -1) {
+    alert('invalid extension!');
+    return false;
+}}
+  </script>
+  {% endblock %}

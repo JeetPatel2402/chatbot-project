@@ -1,0 +1,71 @@
+{% extends "admin/adminLayout.html" %}
+{% block content %}
+<script type="text/javascript">
+  $('#af').addClass("blue")
+</script>
+<!-- !PAGE CONTENT! -->
+<div class="main" style="margin-top:43px;margin-left: 300px;">
+
+  <!-- Header -->
+  <header class="container" style="padding-top:22px">
+    <h5><b>Add Faculty</b></h5>
+  </header>
+
+  <div class="row" style="margin-left:350px">
+  <div class="col-sm-6">
+            <form method="post" action="#">
+            <label>Faculty Id:</label>
+            <div class="form-group"> 
+                <input type="text" name="fid" class="form-control" required placeholder="Faculty Id"> 
+            </div>
+            <label>Name:</label>
+            <div class="form-group"> 
+                <input type="text" name="name" class="form-control" required placeholder="Name"> 
+            </div>
+            <label>Department:</label>
+            <div class="form-group"> 
+                <select class="form-control" name="department" required>
+                  <option value="">select</option>
+                  <option value="7">Computer</option>
+                  <option value="12">Mechanical</option>
+                  <option value="10">Civil</option>
+                </select> 
+            </div>
+            <label>Email:</label>
+            <div class="form-group"> 
+                <input type="email" name="email" required class="form-control" placeholder="Email"> 
+            </div>
+            <label>Contact No.:</label>
+            <div class="form-group"> 
+                <input type="tel" name="contact" maxlength="10" required class="form-control" placeholder="Contact No."> 
+            </div>
+            <label>Date of Birth:</label>
+            <div class="form-group"> 
+                <input type="Date" name="dob" required class="form-control" placeholder="DoB"> 
+            </div>
+            <label>Designation:</label>
+            <div class="form-group"> 
+                <input type="text" name="designation" required class="form-control" placeholder="Designation"> 
+            </div>
+            <label>Password:</label>
+            <div class="form-group"> 
+                <input type="text" name="password" required class="form-control" placeholder="Password"> 
+            </div>
+            <label>Qualification:</label>
+            <div class="form-group"> 
+                <input type="text" name="qual" required class="form-control" placeholder="Qualification"> 
+            </div>
+              <label>Address:</label>
+            <div class="form-group"> 
+                <textarea class="form-control" name="address" required placeholder="Address"></textarea> 
+            </div>
+            <div class="form-group">
+              <center><input type="submit" name="submit" value="Submit" class="btn btn-success">
+                <b><div>{{data}}</div></b>
+              </center>
+            </div>
+            </form>
+    </div>  
+  </div>
+  </div>
+  {% endblock %}

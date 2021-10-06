@@ -1,0 +1,31 @@
+{% extends "admin/adminLayout.html" %}
+{% block content %}
+
+<!-- !PAGE CONTENT! -->
+<div class="main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="container" style="padding-top:22px">
+    <h5><b><i class="fa fa-eye"></i>New Questions</b></h5>
+  </header>
+
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th>Query</th>
+      <th>user</th>
+      <th>Action</th>
+    </tr>
+    <form method="POST" action="#">
+      {% for i in data %}
+      <tr><td><input type="checkbox" name="del" value="{{i[0]}}"></td>
+        {% for j in i %}
+        <td>{{j}}</td>
+        {% endfor %}
+        <td><a href="/admin/addQuestion?dt={{i[0]}}">Add Question</a></td>
+      </tr>
+      {% endfor %}
+  </table>
+  <center><input type="submit" class="btn btn-danger del" value="Delete"></center>
+      </form>
+  {% endblock %}

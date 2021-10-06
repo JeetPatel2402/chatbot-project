@@ -1,0 +1,47 @@
+{% extends "admin/adminLayout.html" %}
+{% block content %}
+
+<!-- !PAGE CONTENT! -->
+<script type="text/javascript">
+  $('#ds').addClass("blue")
+</script>
+<div class="main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+  </header>
+
+  <div class="row-padding margin-bottom">
+    <a href="/admin/messages">
+    <div class="third">
+      <div class="container red padding-16">
+        <div class="left"><i class="fa fa-comment xxxlarge"></i></div>
+        <div class="right">
+          <h3>{{data[0]}}</h3>
+        </div>
+        <div class="clear"></div>
+        <h4>Messages</h4>
+      </div>
+    </div></a>
+    <a href="/admin/newQuestions"><div class="third">
+      <div class="container blue padding-16">
+        <div class="left"><i class="fa fa-eye xxxlarge"></i></div>
+        <div class="right">
+          <h3>{{data[1]}}</h3>
+        </div>
+        <div class="clear"></div>
+        <h4>New Questions</h4>
+      </div>
+    </div></a>
+    <a href="/admin/invalidAnswers"><div class="third">
+      <div class="container teal padding-16">
+        <div class="left"><i class="fa fa-warning xxxlarge"></i></div>
+        <div class="right">
+          <h3>{{data[2]}}</h3>
+        </div>
+        <div class="clear"></div>
+        <h4>Invalid Responses</h4>
+      </div>
+    </div></a>
+  {% endblock %}

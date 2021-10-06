@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>chatbot</title>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/chat_style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.css') }}">
+</head>
+<body><div class="container">
+	<a href="#" class="navbar-brand"><img id="logo" src="{{ url_for('static',filename='image/logo.jpg')}}" width="220px" height="90px"></a>
+ 		<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+ 			<div class="container-fluid">
+ 				<div class="navbar-header">
+ 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#id1">
+ 						<span class="icon-bar"></span>
+ 						<span class="icon-bar"></span>
+ 						<span class="icon-bar"></span>
+ 					</button>
+ 			    </div>
+ 			<div class="collapse navbar-collapse" id="id1">
+ 	
+ 			<ul class="nav navbar-nav navbar-right">
+ 				<li id="md"><a href="/student/">My Account</a></li>
+ 				<li id="qr"><a href="/student/query">Query</a></li>
+ 				<li id="ud"><a href="/student/update">Update Detail</a></li>
+ 				<li id="cp"><a href="/student/changePass">Change Password</a></li>
+ 				<li><a href="/student/stdlogout">logout</a></li>
+ 			</ul> 
+			</div>
+			</div>
+		</nav>				 
+ </div>
+ {% block content %}
+	{% endblock %}
+
+	<script type="text/javascript" src="{{ url_for('static',filename='bootstrap/js/bootstrap.min.js') }}"></script>
+</body>
+</html>

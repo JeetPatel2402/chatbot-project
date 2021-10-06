@@ -1,0 +1,64 @@
+{% extends "admin/adminLayout.html" %}
+{% block content %}
+<script type="text/javascript">
+  $('#afl').addClass("blue")
+</script>
+<!-- !PAGE CONTENT! -->
+<div class="main" style="margin-top:43px;margin-left: 300px;">
+
+  <!-- Header -->
+  <header class="container" style="padding-top:22px">
+    <h5><b>Add File</b></h5>
+  </header>
+
+  <div class="row" style="margin-left:350px">
+  <div class="col-sm-6">
+            <form method="post" action="#" enctype = "multipart/form-data">
+            <label>File:</label>
+            <div class="form-group"> 
+                <input type="file" name="file" required> 
+            </div>
+            <label>File Type:</label>
+            <div class="form-group">
+              <input type="radio" checked="true" onclick="document.getElementById('sel').disabled=false;document.getElementById('sel1').disabled=true;document.getElementById('pname').disabled=true;document.getElementById('iname').disabled=false;" name="Category" style="margin-right: 5px" value="image">Image   
+                <label>Category:</label>
+            <div class="form-group"> 
+                <select class="form-control" id="sel" required name="cat">
+                  <option value="">--Select--</option>
+                  <option value="timetable">Class TimeTable</option>
+                  <option value="other">General</option>
+                </select> 
+            </div>
+            <div class="form-group">
+              <input type="text" required name="name" id="iname" class="form-control" placeholder="ImageName"><p>for timetable: branchnameDivisionname</p><p> ex.: computerc81.jpg</p>
+            </div>
+                <input type="radio" onclick="document.getElementById('sel').disabled=true;document.getElementById('sel1').disabled=false;document.getElementById('iname').disabled=true;document.getElementById('pname').disabled=false;" name="Category" style="margin-right: 5px" value="pdf">Pdf   
+            
+            <label>Category:</label>
+            <div class="form-group"> 
+                <select class="form-control" id="sel1" required name="cat" disabled="true">
+                  <option value="">--Select--</option>
+                  <option value="result">College Results</option>
+                  <option value="other">Other</option>
+                </select> 
+            </div>
+            <div class="form-group">
+              <input type="text" required name="name" id="pname" disabled="true" class="form-control" placeholder="ImageName">
+            </div>
+            </div>
+            <div class="alert alert-success" id="msg" style="display: block;">{{msg}}</div>
+            <div class="form-group">
+              <center><input type="submit" name="submit" value="Submit" class="btn btn-success"></center>
+            </div>
+          </form>
+    </div>  
+  </div>
+  </div>
+  <script type="text/javascript">
+    var msg=$("#msg").text();
+    console.log(msg);
+    if(msg==""){
+      $("#msg").css("display","none");
+    }
+  </script>
+  {% endblock %}

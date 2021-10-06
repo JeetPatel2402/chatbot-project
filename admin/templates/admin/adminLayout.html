@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<title>admin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap-datepicker.js') }}"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/admin-style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap-datepicker.css') }}">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.ptxt{
+  position: relative;
+  bottom: 28px;
+  left: 290px;
+  color: #f36c01;
+  cursor: pointer; 
+
+}
+.pass_show .ptxt:hover{color: #333333;} 
+.container{
+  width: 200px;
+  margin: 16px;
+}
+table tr td,th{
+  font-size: 18px;
+  border-collapse: collapse;
+}
+</style>
+<body class="light-grey">
+
+<!-- Top container -->
+<div class="bar top black large" style="z-index:4">
+  <button class="bar-item button hide-large hover-none hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Menu</button>
+  <span class="bar-item">SRPEC</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="sidebar collapse white animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="container row">
+    <div class="col s8 bar">
+      <span>Welcome, <strong>admin</strong></span><br>
+    </div>
+  </div>
+  <hr>
+  <div class="bar-block">
+        <a href="/admin/" class="bar-item button padding" id="ds"><i class="fa fa-dashboard fa-fw"></i>&nbsp; Dashboard</a>
+    <a href="/admin/addStudent" class="bar-item button padding" id="as"><i class="fa fa-edit fa-fw"></i>&nbsp; Add Student</a>
+    <a href="/admin/addFaculty" class="bar-item button padding" id="af"><i class="fa fa-edit fa-fw"></i>&nbsp; Add Faculty</a>
+    <a href="/admin/addQuestion" class="bar-item button padding" id="aq"><i class="fa fa-edit fa-fw"></i>&nbsp; Add Question</a>
+    <a href="/admin/updateAnswer" class="bar-item button padding" id="ua"><i class="fa fa-edit fa-fw"></i>&nbsp; Update Answers</a>
+    <a href="/admin/addFile" class="bar-item button padding" id="afl"><i class="fa fa-edit fa-fw"></i>&nbsp; Add File</a>
+    <a href="/admin/setting" class="bar-item button padding" id="s"><i class="fa fa-edit fa-fw"></i>&nbsp; Settings</a>
+    <a href="/admin/adlogout" class="bar-item button padding"><i class="fa fa-edit fa-fw"></i>&nbsp; Logout</a>
+    <br><br>
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+    if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+    } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
